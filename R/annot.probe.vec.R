@@ -1,9 +1,9 @@
 annot.probe.vec <-
 function(probe.vec, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "Gene_Name","UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island")){
-## function that getes a vector of Illumina ids and returs a matrix of annotations according to the required annotation 
+## function that gets a vector of Illumina ids and returs a matrix of annotations according to the required annotation 
 ## one can specify column names from the illumina annotation file). 
-	require(data.table)
-	if (is.null(annot)) {
+
+  if (is.null(annot)) {
 		if (!is.null(annotation.file.name)){
 			cat("Loading annotation from Illumina's menifest", "\n")
 			annot <- read.csv(annotation.file.name, skip = 7)

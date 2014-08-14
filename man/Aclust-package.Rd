@@ -28,7 +28,6 @@ Maintainer: Tamar Sofer <tsofer@hsph.havard.edu>
 \references{
 Sofer, T, Schifano, ED, Hoppin, JA, Hou^*, L and Baccarelli^* AA, 2013. ``A-clustering: A Novel Method for the Detection of Co-regulated Methylation Regions, and Regions Associated with Exposure".
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
 \keyword{ Methylation, Regional Analysis }
 
 \examples{

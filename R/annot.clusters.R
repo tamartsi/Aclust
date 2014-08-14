@@ -1,8 +1,7 @@
 annot.clusters <-
-function(clusters.list , annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "Gene_Name","UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island")){
-## function that getes a list of clusters, and returns a list of annotations
+function(clusters.list, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "Gene_Name","UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island")){
+## function that gets a list of clusters, and returns a list of annotations
 
-	require(data.table)
 	if (is.null(annot)) {
 		if (!is.null(annotation.file.name)){
 			cat("Loading annotation from Illumina's menifest", "\n")

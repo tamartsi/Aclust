@@ -8,7 +8,6 @@ function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.
 ## If a file to print report is given, then a latex file is generated with two tables. One table summarized the annotation and effects of
 ## the top clusters, annother table summarizes the individual sites analysis of the sites from the top clusters. 
 ## minimum.sites is the minimal size of clusters to consider. The FDR correction is applied only these clusters. 
-	require(data.table)
 	 
 	if (!is.null(clusters.GEE.results)) anal.results <- clusters.GEE.results 
 		else anal.results <- read.table(clusters.GEE.results.file, header = T, as.is = T)

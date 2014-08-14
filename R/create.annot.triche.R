@@ -1,10 +1,9 @@
 create.annot.triche <-
 function(probe.vec, only.locations = F){
 	
-	require(data.table)
 	## probe.vec is a vector with illumina IDs
-#	legal.inds <- grep("gc", probe.vec)
-#	if (length(legal.inds) < length(probe.vec)) cat("Some probes were removed due to names not matching the annotation package")
+  #	legal.inds <- grep("gc", probe.vec)
+  #	if (length(legal.inds) < length(probe.vec)) cat("Some probes were removed due to names not matching the annotation package")
 	
 	n.probes <- length(probe.vec)
 	

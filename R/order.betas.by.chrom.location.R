@@ -3,11 +3,10 @@ function(betas, annot = NULL, annotation.file.name = NULL, return.chroms = NULL)
 ### function that gets a matrix of beta values (rows are CpG sites, column names are samples' names) 
 ### and returns a list of matrices ordered for each chromosome, or for selected chromosomes
 ### also returns a vector of locations for each probe
-	require(data.table)
 	
-	if (is.null(annot)) {
+  if (is.null(annot)) {
 		if (!is.null(annotation.file.name)){
-			cat("Loading annotation from Illumina's menifest", "\n")
+			cat("Loading annotation from Illumina's manifest", "\n")
 			annot <- read.csv(annotation.file.name, skip = 7)
 			annot <- data.table(annot)
 			setkeyv(annot, c("CHR","Coordinate_36") ) } else{

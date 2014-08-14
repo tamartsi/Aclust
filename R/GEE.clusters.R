@@ -8,8 +8,6 @@ function(betas, clusters.list, exposure, covariates, id, working.cor = "ex", min
 ## Note: methylation is treated here as outcome. 
 ## if file is given, print results to file. 
 
-	require(geepack)
-	
 	n.sites <- unlist(lapply(clusters.list, function(x) return(length(x))))
 	inds.rm <- which(n.sites < minimum.cluster.size)
 	

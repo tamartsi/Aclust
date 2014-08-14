@@ -2,7 +2,7 @@
 \alias{annot}
 \docType{data}
 \title{
-Annotation for the probes in the Illumina 450K chip, created using the package IlluminaHumanMethylation450k.db from Bioconductor. 
+Annotation for the probes on chromosome 7 in the Illumina 450K chip, created using the package IlluminaHumanMethylation450k.db from Bioconductor. 
 }
 \description{
 a data.table with annotation for probes
