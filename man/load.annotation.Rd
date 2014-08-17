@@ -23,7 +23,7 @@ A data.table object with the annotation.
 \examples{
 
 ### not run! need to put the appropriate path to the annotation file
-# annotation.file.name <- "illumina_450_menifest_v.1.2.csv"
+# annotation.file.name <- "illumina_450_manifest_v.1.2.csv"
 # annot <- load.annotation(annotation.file.name)
 # annot[1:5]
 }

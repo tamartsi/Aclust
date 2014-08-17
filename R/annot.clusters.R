@@ -4,7 +4,7 @@ function(clusters.list, annot = NULL, annotation.file.name = NULL, required.anno
 
 	if (is.null(annot)) {
 		if (!is.null(annotation.file.name)){
-			cat("Loading annotation from Illumina's menifest", "\n")
+			cat("Loading annotation from Illumina's manifest", "\n")
 			annot <- read.csv(annotation.file.name, skip = 7)
 			annot <- data.table(annot)
 			setkeyv(annot, c("CHR","Coordinate_36") ) } else{

@@ -43,7 +43,7 @@ A significance p-value threshold (after FDR correction). Only clusters with p-va
 An effect size threshold. Only clusters with estimated effect size larger than cutoff.effect.size will be reported. 
 }
   \item{annot}{
-annotation data table. The package uses the Illumina annotation file ``illumina_450_menifest_v.1.2". 
+annotation data table. The package uses the Illumina annotation file ``illumina_450_manifest_v.1.2". 
 }
   \item{annotation.file.name}{
 A name of annotation file to read. By default it is not required, since one can use `annot', which is in the package. 
