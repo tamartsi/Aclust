@@ -1,2 +1,2 @@
+importMethodsFrom(AnnotationDbi, "as.list")
 exportPattern("^[[:alpha:]]+")
-importMethodsFrom(AnnotationDbi, as.list)
