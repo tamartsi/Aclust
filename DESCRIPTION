@@ -9,3 +9,4 @@ Description: The package implements the A-clustering algorithm to detect regions
 License: GPL2
 LazyLoad: yes
 Depends: geepack, data.table
+Suggests: AnnotationDbi, IlluminaHumanMethylation450k.db

@@ -35,6 +35,6 @@ gene name, functional group, associated island (or CpG resort), type of region i
 ## installing annotation package from Bioconductor
 # source("http://bioconductor.org/biocLite.R")  
 # biocLite("IlluminaHumanMethylation450k.db")
-# require(IlluminaHumanMethylation450k.db)
-# annot <- create.annot.triche(rownames(betas.7), only.locations = T)
+# require(IlluminaHumanMethylation450k.db) # this must be loaded
+# annot.7 <- create.annot.triche(rownames(betas.7), only.locations = T)
 }
