@@ -8,5 +8,5 @@ Maintainer: Tamar Sofer <tsofer@hsph.harvard.edu>
 Description: The package implements the A-clustering algorithm to detect regions of co-regulated CoG sites, and a  pipeline focused on the analysis of methylation data, in which they are assumed to be outcomes. The analysis starts with a clustering step, in which adjacent probes are clustered based on correlations, and then exposure effect is estimated using GEEs. There is a function to output the results and write tables to a latex file. 
 License: GPL2
 LazyLoad: yes
-Depends: geepack, data.table
-Suggests: AnnotationDbi, IlluminaHumanMethylation450k.db
+Depends: geepack, data.table, AnnotationDbi
+Suggests: IlluminaHumanMethylation450k.db
