@@ -8,7 +8,7 @@ Summarize the top clusters
 Returns information about the top cluster in the GEE analysis
 }
 \usage{
-summarize.top.clusters(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.GEE.results.file = NULL, minimum.sites = 2, top.number = 10, cutoff.fdr.pval = 0.05, cutoff.effect.size = NULL, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "UCSC_RefGene_Name", "UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"), file.to.print.report = NULL)
+summarize.top.clusters(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.GEE.results.file = NULL, minimum.sites = 2, top.number = 10, cutoff.fdr.pval = 0.05, cutoff.effect.size = NULL, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_37", "UCSC_RefGene_Name", "UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"), file.to.print.report = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -88,11 +88,11 @@ rownames(covariates) <- colnames(betas.7)
 ## IlluminaHumanMethylation450k.db package:
 ## annot <- create.annot.triche(rownames(betas.7)
 
-data(annot)
+data(annot.7)
 
-clusters.list <- assign.to.clusters(betas.7, annot)
+clusters.list <- assign.to.clusters(betas.7, annot.7)
 GEE.results.clusters <- GEE.clusters(betas.7, clusters.list, exposure, covariates, id = colnames(betas.7), working.cor = "ex")
-top.clusters.summary <- summarize.top.clusters(betas.7, covariates, exposure, id = colnames(betas.7), GEE.results.clusters, "results.tex", annot= annot)
+top.clusters.summary <- summarize.top.clusters(betas.7, covariates, exposure, id = colnames(betas.7), GEE.results.clusters, "results.tex", annot= annot.7)
 }
 
 

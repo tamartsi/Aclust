@@ -8,7 +8,7 @@ Annotate vector of Illumina probe names
 Returns a matrix with annotations of the CpG sites represented by a given vector of probe names
 }
 \usage{
-annot.probe.vec(probe.vec, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "Gene_Name", "UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"))
+annot.probe.vec(probe.vec, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_37", "UCSC_RefGene_Name", "UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,6 +33,6 @@ A matrix of requred.annotations  for each of the probes in probe.vec
 
 \examples{
 data(betas.7)
-data(annot)
-annot.sites <- annot.probe.vec(rownames(betas.7)[1:10], annot = annot)
+data(annot.7)
+annot.sites <- annot.probe.vec(rownames(betas.7)[1:10], annot = annot.7)
 }

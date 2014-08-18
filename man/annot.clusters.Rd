@@ -8,7 +8,7 @@ Annotate vectors of Illumina probe names, each vector represent different cluste
 Returns a list of matrices with annotations of the CpG sites represented by vector of probe names. Each vector represent a cluster
 }
 \usage{
-annot.clusters(clusters.list, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "Gene_Name", "UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"))
+annot.clusters(clusters.list, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_37", "UCSC_RefGene_Name", "UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -37,9 +37,9 @@ data(betas.7) ## upload methylation data
 exposure <- rbinom(ncol(betas.7), 1,prob = 0.5) ## generate random exposure
 covariates <- matrix(rnorm(2*ncol(betas.7)), ncol = 2)
 
-data(annot)
-clusters.list <- assign.to.clusters(betas.7, annot)
+data(annot.7)
+clusters.list <- assign.to.clusters(betas.7, annot.7)
 
-annotated.clusters <- annot.clusters(clusters.list[1:10], annot = annot, required.annotation = c("IlmnID", "Coordinate_36", "Gene_Name", "UCSC_RefGene_Group"))
+annotated.clusters <- annot.clusters(clusters.list[1:10], annot = annot.7, required.annotation = c("IlmnID", "Coordinate_37", "UCSC_RefGene_Name", "UCSC_RefGene_Group"))
 
 }

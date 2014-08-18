@@ -13,8 +13,8 @@ methylation regions, treated as outcomes, as affected by a single exposure. (The
 \tabular{ll}{
 Package: \tab Aclust\cr
 Type: \tab Package\cr
-Version: \tab 2.0\cr
-Date: \tab 2013-07-15\cr
+Version: \tab 2.0.1\cr
+Date: \tab 2014-08-18\cr
 License: \tab What license is it under?\cr
 }
 First, load annotation. The proceed create a cluster list using the functions assign.to.clusters. To find association with exposure, the clusters are then analyzed using GEEs by the function
@@ -36,8 +36,8 @@ exposure <- rbinom(ncol(betas.7), 1,prob = 0.5) ## generate random exposure
 covariates <- matrix(rnorm(2*ncol(betas.7)), ncol = 2)
 rownames(covariates) <- colnames(betas.7)
 
-data(annot)  ## load annotation created using the IlluminaHumanMethylation450k.db package on July 2013
-clusters.list <- assign.to.clusters(betas.7, annot)
+data(annot.7)  ## load annotation created using the IlluminaHumanMethylation450k.db package on July 2013
+clusters.list <- assign.to.clusters(betas.7, annot.7)
 GEE.results.clusters <- GEE.clusters(betas.7, clusters.list, exposure, covariates, id = colnames(betas.7), working.cor = "ex")
-top.clusters.summary <- summarize.top.clusters(betas.7, covariates, exposure, id = colnames(betas.7), GEE.results.clusters, "results.tex", annot= annot)
+top.clusters.summary <- summarize.top.clusters(betas.7, covariates, exposure, id = colnames(betas.7), GEE.results.clusters, "results.tex", annot= annot.7)
 }

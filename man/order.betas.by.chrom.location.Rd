@@ -37,8 +37,8 @@ Annotation: the package is adjusted to the Illumina annotation (i.e. through par
 }
 \examples{
 data(betas.7) ## upload methylation data
-data(annot)
-dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot)
+data(annot.7)
+dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot.7)
 
 dat.7.ord$betas.by.chrom$"7"[1:5,1:5]
 dat.7.ord$sites.locations.by.chrom$"7"[1:5]

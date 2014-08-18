@@ -13,16 +13,33 @@ function(betas, annot = NULL, annotation.file.name = NULL, dist.type = "spearman
 		betas.temp <- chrom.list[[1]][[i]]
 		locations.temp <- chrom.list[[2]][[i]]
 		
-		betas.temp <- betas.temp[which(!is.na(locations.temp$Coordinate_36)),]
-		locations.temp <- locations.temp[!is.na(Coordinate_36)]
+		betas.temp <- betas.temp[which(!is.na(locations.temp$Coordinate_37)),]
+		locations.temp <- locations.temp[!is.na(Coordinate_37)]
 		
-		if (!is.null(bp.merge)) which.clust <- Dbp.merge(t(betas.temp), thresh.dist = dist.thresh, bp.thresh.dist = bp.merge, as.numeric(locations.temp$Coordinate_36),  dist.type = dist.type)
-			else which.clust <- 1:nrow(locations.temp)
-		if (!is.null(bp.thresh.clust))	
-			clust.vec <- Acluster(t(betas.temp), thresh.dist = dist.thresh, which.clust = which.clust, location.vec = as.numeric(locations.temp$Coordinate_36), max.dist =  bp.thresh.clust, type = method, dist.type = dist.type)  else 
-					clust.vec <- Acluster(t(betas.temp), thresh.dist = NULL, which.clust = which.clust, location.vec = NULL, max.dist =  bp.thresh.clust, type = method, dist.type = dist.type)
+		if (!is.null(bp.merge)){
+      which.clust <- Dbp.merge(t(betas.temp),
+                               thresh.dist = dist.thresh, 
+                               bp.thresh.dist = bp.merge, 
+                               as.numeric(locations.temp$Coordinate_37),  
+                               dist.type = dist.type)
+		}	else which.clust <- 1:nrow(locations.temp)
+		if (!is.null(bp.thresh.clust)){	
+      clust.vec <- Acluster(t(betas.temp), 
+                            thresh.dist = dist.thresh, 
+                            which.clust = which.clust, 
+                            location.vec = as.numeric(locations.temp$Coordinate_37), 
+                            max.dist =  bp.thresh.clust, type = method, 
+                            dist.type = dist.type)  
+    } else 
+					clust.vec <- Acluster(t(betas.temp), thresh.dist = NULL, 
+                                which.clust = which.clust, 
+                                location.vec = NULL, 
+                                max.dist =  bp.thresh.clust, 
+                                type = method, dist.type = dist.type)
 
-		clusters.by.chrom[[i]] <- lapply(clust.vec, function(x) return(locations.temp$IlmnID[which(clust.vec == x)]))
+		clusters.by.chrom[[i]] <- lapply(clust.vec, function(x) {
+      return(locations.temp$IlmnID[which(clust.vec == x)])
+    })
 		clusters.by.chrom[[i]] <- clusters.by.chrom[[i]][which(!duplicated(clusters.by.chrom[[i]]))]
 		
 		if (i == 1) clusters.all <- clusters.by.chrom[[1]] 

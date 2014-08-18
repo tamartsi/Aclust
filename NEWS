@@ -1,0 +1,12 @@
+  CHANGES IN Aclust VERSION 2.0.1
+
+OVERVIEW
+
+   o All functions default to using annotation
+     for Genomic Build 37 (coordinates named 
+     MAPINFO in Illumina's annotation files)
+   o Minimal improvements of documentation to 
+     pass R CMD check
+   o included dataset and annotation were 
+     trimmed to 500 sites on chromosome 7 
+     to speed up runtime for examples

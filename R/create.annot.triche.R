@@ -12,27 +12,27 @@ function(probe.vec, only.locations = F){
 	
 	
 	## get chromosome 
-	CHR <- unlist(as.list(IlluminaHumanMethylation450kCHR36[probe.vec]))
+	CHR <- unlist(as.list(IlluminaHumanMethylation450kCHR37[probe.vec]))
 	
-	##  CPG location, genome build 36
-	Coordinate_36 <- unlist(as.list(IlluminaHumanMethylation450kCPG36[probe.vec]))
-	Coordinate_36 <- as.numeric(Coordinate_36)
+	##  CPG location, genome build 37
+	Coordinate_37 <- unlist(as.list(IlluminaHumanMethylation450kCPG37[probe.vec]))
+	Coordinate_37 <- as.numeric(Coordinate_37)
 	
 	if (only.locations) {
-			annot <- data.table( IlmnID, CHR, Coordinate_36,   key = c("CHR", "Coordinate_36") )
+			annot <- data.table( IlmnID, CHR, Coordinate_37,   key = c("CHR", "Coordinate_37") )
 			return(annot)
 	}  else{
 	
 	## get design type
 	Infinium_Design_Type <- unlist(as.list(IlluminaHumanMethylation450kDESIGN[probe.vec]))
 	
-	#	RefGene_Name (from NCBI), gene symbol
+	#	UCSC_RefGene_Name (from NCBI), gene symbol
 	legal.inds <- grep("cg", probe.vec)
-	Gene_Name <- rep("", length(probe.vec))
-	Gene_Name[legal.inds] <- unlist(as.list(IlluminaHumanMethylation450kSYMBOL[probe.vec[legal.inds]]))
-	Gene_Name[which(is.na(Gene_Name))] <- ""
+	UCSC_RefGene_Name <- rep("", length(probe.vec))
+	UCSC_RefGene_Name[legal.inds] <- unlist(as.list(IlluminaHumanMethylation450kSYMBOL[probe.vec[legal.inds]]))
+	UCSC_RefGene_Name[which(is.na(UCSC_RefGene_Name))] <- ""
 		
-	## regulartory group
+	## regulatory group
 	mapped_probes <- mappedkeys(IlluminaHumanMethylation450kREGULATORYGROUP)
 	t <- match(probe.vec, mapped_probes)
 	inds <- which(!is.na(t))
@@ -40,7 +40,7 @@ function(probe.vec, only.locations = F){
 	UCSC_RefGene_Group[inds] <- unlist(as.list(IlluminaHumanMethylation450kREGULATORYGROUP[probe.vec[inds]]))
 
 	
-	## associated CpG island (resot)
+	## associated CpG island (resort)
 	mapped_probes <- mappedkeys(IlluminaHumanMethylation450kCPGINAME)
 	t <- match(probe.vec, mapped_probes)
 	inds <- which(!is.na(t))
@@ -48,7 +48,7 @@ function(probe.vec, only.locations = F){
 	UCSC_CpG_Islands_Name[inds] <- unlist(as.list(IlluminaHumanMethylation450kCPGINAME[probe.vec[inds]]))
 	
 	
-	## region withing resort
+	## region within resort
 	mapped_probes <- mappedkeys(IlluminaHumanMethylation450kCPGIRELATION)
 	t <- match(probe.vec, mapped_probes)
 	inds <- which(!is.na(t))
@@ -56,7 +56,11 @@ function(probe.vec, only.locations = F){
 	Relation_to_UCSC_CpG_Island[inds] <- unlist(as.list(IlluminaHumanMethylation450kCPGIRELATION[probe.vec[inds]]))
 
 	
-	annot <- data.table( IlmnID, Infinium_Design_Type , CHR, Coordinate_36,  Gene_Name, UCSC_RefGene_Group, UCSC_CpG_Islands_Name, Relation_to_UCSC_CpG_Island, key = c("CHR", "Coordinate_36") )
+	annot <- data.table( IlmnID, Infinium_Design_Type , 
+                       CHR, Coordinate_37,  UCSC_RefGene_Name, 
+                       UCSC_RefGene_Group, UCSC_CpG_Islands_Name, 
+                       Relation_to_UCSC_CpG_Island, 
+                       key = c("CHR", "Coordinate_37") )
 	
 	return(annot)
 	}

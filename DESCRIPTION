@@ -1,7 +1,7 @@
 Package: Aclust
 Type: Package
 Title: Clustering functions and analysis pipeline for methylation outcome data based on clustering and GEEs
-Version: 2.0
+Version: 2.0.1
 Date: 2013-08-23
 Author: Tamar Sofer
 Maintainer: Tamar Sofer <tsofer@hsph.harvard.edu>
