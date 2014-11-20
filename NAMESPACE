@@ -1,1 +1,2 @@
+importFrom(AnnotationDbi, "as.list")
 exportPattern("^[[:alpha:]]+")

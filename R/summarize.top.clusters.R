@@ -1,14 +1,26 @@
 summarize.top.clusters <-
-function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.GEE.results.file = NULL, minimum.sites = 2, top.number = 10, cutoff.fdr.pval = 0.05, cutoff.effect.size = NULL, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "UCSC_RefGene_Name","UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"), file.to.print.report = NULL){
+function(betas, covariates, exposure, id, 
+         clusters.GEE.results = NULL, 
+         clusters.GEE.results.file = NULL, 
+         minimum.sites = 2, top.number = 10, 
+         cutoff.fdr.pval = 0.05, cutoff.effect.size = NULL, 
+         annot = NULL, annotation.file.name = NULL, 
+         required.annotation = c("IlmnID", "Coordinate_37", 
+                                 "UCSC_RefGene_Name",
+                                 "UCSC_RefGene_Group", 
+                                 "UCSC_CpG_Islands_Name", 
+                                 "Relation_to_UCSC_CpG_Island"), 
+         file.to.print.report = NULL){
 ## Returns a summary of the top clusters:
-## Chooses the top clusters according to the top.number provvided, with FDR p-value at most 0.05, and with effect size at least cutoff.effect.size (if given)
+## Chooses the top clusters according to the top.number provided, 
+## with FDR p-value at most 0.05, and with effect size at least cutoff.effect.size (if given)
 ## For each of the top cluster, returns exposure effect size and pvalue before and after FDR, and illumina annotation
-## Also returns in dividual GEE analysis of sites in the cluster (i.e. with sandwich standard error)
+## Also returns individual GEE analysis of sites in the cluster (i.e. with sandwich standard error)
 ## Finally, the returnd lists are ordered by exposure effect size on the cluster
-## If a file to print report is given, then a latex file is generated with two tables. One table summarized the annotation and effects of
+## If a file to print report is given, then a latex file is generated with two tables. 
+## One table summarized the annotation and effects of
 ## the top clusters, annother table summarizes the individual sites analysis of the sites from the top clusters. 
 ## minimum.sites is the minimal size of clusters to consider. The FDR correction is applied only these clusters. 
-	require(data.table)
 	 
 	if (!is.null(clusters.GEE.results)) anal.results <- clusters.GEE.results 
 		else anal.results <- read.table(clusters.GEE.results.file, header = T, as.is = T)
@@ -36,13 +48,10 @@ function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.
 		cat("0 clusters were found with corrected p-value smaller than ",  cutoff.fdr.pval, "no output produced" ,"/n")
 	}  else {
 	
-
-	
 	last.one <- nrow(anal.results)	
 	top.clusters <- anal.results[last.one:(last.one - top.number + 1)]
 	
-	### Top.clusters will be outputed 
-	
+	### Top.clusters will be output
 	
 	sites.vec <- rep("", length = sum(top.clusters$n_sites_in_cluster))
 	cluster.vec <- rep(0, sum(top.clusters$n_sites_in_cluster))
@@ -112,6 +121,8 @@ function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.
 	}
 	
 	top.clusters <- top.clusters[,abs.exp.effect := NULL]
-	return(list(top.clusters = top.clusters, annotation.top.clusters = annotation.top.clusters, individual.sites.analysis = ind.res.mat))
+	return(list(top.clusters = top.clusters, 
+              annotation.top.clusters = annotation.top.clusters, 
+              individual.sites.analysis = ind.res.mat))
 	}
 }

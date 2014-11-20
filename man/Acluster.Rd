@@ -42,10 +42,13 @@ An m vector of cluster assignments of the m ordered variables.
 }
 \examples{
 data(betas.7)
-data(annot)
+data(annot.7)
 
-dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot)
-cluster.vec <- Acluster(ordr.vec = dat.7.ord$betas.by.chrom[[1]], thresh.dist = 0.2, location.vec = dat.7.ord$sites.locations.by.chrom[[1]]$Coordinate_36, max.dist = 1000, type = "average")
+dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot.7)
+cluster.vec <- Acluster(ordr.vec = dat.7.ord$betas.by.chrom[[1]], 
+thresh.dist = 0.2, 
+location.vec = dat.7.ord$sites.locations.by.chrom[[1]]$Coordinate_37, 
+max.dist = 1000, type = "average")
 
 cluster.vec[1:10] ## sites 1 to 6 are clustered together, but 7,8,9 are singletons. 
 

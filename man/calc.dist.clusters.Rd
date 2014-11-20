@@ -19,10 +19,10 @@ An (n by $m_1$) matrix of $m_1$ vectors composing a cluster
 An (n by  $m_2$) matrix of $m_2$ vectors composing a cluster
 }
   \item{type}{
-Clustering by \cor{type}: ``single", ``complete" or ``averge"
+Clustering by \code{\link{cor}} 
 }
   \item{dist.type}{
-%%     ~~Describe \code{dist.type} here~~
+type: ``single'', ``complete'', or ``average''
 }
 }
 \details{

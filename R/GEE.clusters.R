@@ -1,5 +1,7 @@
 GEE.clusters <-
-function(betas, clusters.list, exposure, covariates, id, working.cor = "ex", minimum.cluster.size = 2, result.file.name = NULL){
+function(betas, clusters.list, exposure, covariates, id, 
+         working.cor = "ex", minimum.cluster.size = 2, 
+         result.file.name = NULL){
 ## the ids are rownames of the betas, and are ordered by the same ordering of the covariates matrix.
 ## function that gets a matrix of beta values, a list of clusters, exposure variable, and covariates
 ## and performs GEE. Returns a matrix with the results of the GEE model (only the exposure effect and p-value)
@@ -8,8 +10,6 @@ function(betas, clusters.list, exposure, covariates, id, working.cor = "ex", min
 ## Note: methylation is treated here as outcome. 
 ## if file is given, print results to file. 
 
-	require(geepack)
-	
 	n.sites <- unlist(lapply(clusters.list, function(x) return(length(x))))
 	inds.rm <- which(n.sites < minimum.cluster.size)
 	
@@ -90,13 +90,18 @@ function(betas, clusters.list, exposure, covariates, id, working.cor = "ex", min
 		
 	}
 
-	result <- data.frame(exposure_effect_size = effect, exposure_effect_se = se, exposure_pvalue= pvals, n_sites_in_cluster = n.sites, cluster_sites =sites)	
+	result <- data.frame(exposure_effect_size = effect, 
+                       exposure_effect_se = se, 
+                       exposure_pvalue= pvals, 
+                       n_sites_in_cluster = n.sites, 
+                       cluster_sites =sites)	
 	result <- result[order(result$exposure_pvalue),]
 	
 	
-	if(!is.null(result.file.name)) write.table(result, file = result.file.name, col.names = T , row.names = F,  append = T)
-	
-	
+	if(!is.null(result.file.name)){
+    write.table(result, file = result.file.name, 
+                col.names = T , row.names = F,  append = T)
+	}	
 	return(result)
 
 }

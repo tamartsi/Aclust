@@ -42,9 +42,9 @@ A plot is shown
 
 \examples{
 data(betas.7)
-data(annot)
-dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot)
-cluster.vec <- Acluster(ordr.vec = dat.7.ord$betas.by.chrom[[1]], thresh.dist = 0.5, location.vec = dat.7.ord$sites.locations.by.chrom[[1]]$Coordinate_36, max.dist = 1000, type = "single")
+data(annot.7)
+dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot.7)
+cluster.vec <- Acluster(ordr.vec = dat.7.ord$betas.by.chrom[[1]], thresh.dist = 0.5, location.vec = dat.7.ord$sites.locations.by.chrom[[1]]$Coordinate_37, max.dist = 1000, type = "single")
 
 c.mat <- cor(t(betas.7)[,1:15], method = "spearman")
 plot.cor.clusts(cor.mat = c.mat, clusts  = cluster.vec[1:15])

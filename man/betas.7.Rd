@@ -29,8 +29,8 @@ data(betas.7)
 betas.7[1:5,1:5]
 
 ## ordering the data by location on the chromosome (used for A-clustering):
-data(annot)
-dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot)
+data(annot.7)
+dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot.7)
 names(dat.7.ord)
 dim(dat.7.ord$betas.by.chrom$"7")
 dim(dat.7.ord$sites.locations.by.chrom$"7")

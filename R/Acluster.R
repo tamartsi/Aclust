@@ -29,7 +29,9 @@ function(ordr.vec, thresh.dist, which.clust = NULL, location.vec = NULL, max.dis
 				clust.2.min <- k +1
 				clust.2.max <- last(which.clust[which.clust == which.clust[k + 1]])
 				
-				dist.clust[k] <- calc.dist.clusters(ordr.vec[,clust.1.min:clust.1.max], ordr.vec[,clust.2.min:clust.2.max], type = type, dist.type = dist.type)
+				dist.clust[k] <- calc.dist.clusters(ordr.vec[,clust.1.min:clust.1.max], 
+                                            ordr.vec[,clust.2.min:clust.2.max], 
+                                            type = type, dist.type = dist.type)
 				
 				}
 		}

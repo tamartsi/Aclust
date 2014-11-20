@@ -55,6 +55,6 @@ covariates <- matrix(rnorm(2*ncol(betas.7)), ncol = 2)
 # annot <- create.annot.triche(rownames(betas.7))
 
 ## else a version created on July 2013 is already in the package:
-data(annot)
-clusters.list <- assign.to.clusters(betas.7, annot)
+data(annot.7)
+clusters.list <- assign.to.clusters(betas.7, annot.7)
 }

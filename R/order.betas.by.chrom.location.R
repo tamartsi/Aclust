@@ -3,14 +3,14 @@ function(betas, annot = NULL, annotation.file.name = NULL, return.chroms = NULL)
 ### function that gets a matrix of beta values (rows are CpG sites, column names are samples' names) 
 ### and returns a list of matrices ordered for each chromosome, or for selected chromosomes
 ### also returns a vector of locations for each probe
-	require(data.table)
 	
-	if (is.null(annot)) {
+  if (is.null(annot)) {
 		if (!is.null(annotation.file.name)){
-			cat("Loading annotation from Illumina's menifest", "\n")
+			cat("Loading annotation from Illumina's manifest", "\n")
 			annot <- read.csv(annotation.file.name, skip = 7)
 			annot <- data.table(annot)
-			setkeyv(annot, c("CHR","Coordinate_36") ) } else{
+			setnames(annot, c("MAPINFO"), c("Coordinate_37"))
+      setkeyv(annot, c("CHR","Coordinate_37") ) } else{
 				cat("Loading annotation from Tim Triche's package on Bioconductor", "\n")
 				annot <- create.annot.triche(probe.vec = rownames(betas), only.locations = T)
 				}
@@ -18,7 +18,7 @@ function(betas, annot = NULL, annotation.file.name = NULL, return.chroms = NULL)
 	
 	annot.betas <- annot[IlmnID %in% rownames(betas)]
 	annot.betas$IlmnID <- as.character(annot.betas$IlmnID)
-	annot.betas$Coordinate_36 <- annot.betas$Coordinate_36
+	annot.betas$Coordinate_37 <- annot.betas$Coordinate_37
 	
 	chroms <- unique(annot.betas$CHR)
 	if (!is.null(return.chroms)) chroms <- intersect(chroms, return.chroms)
@@ -36,9 +36,12 @@ function(betas, annot = NULL, annotation.file.name = NULL, return.chroms = NULL)
 			rownames(betas.by.chrom[[i]]) <- cpg.chrom
 		}
 
-		sites.by.chrom[[i]] <- annot.betas[CHR == chroms[i], c("IlmnID", "Coordinate_36"), with = F]
+		sites.by.chrom[[i]] <- annot.betas[CHR == chroms[i], 
+                                       c("IlmnID", "Coordinate_37"), 
+                                       with = F]
 		
 	}
 	
-	return(list(betas.by.chrom = betas.by.chrom, sites.locations.by.chrom = sites.by.chrom))
+	return(list(betas.by.chrom = betas.by.chrom, 
+              sites.locations.by.chrom = sites.by.chrom))
 }
