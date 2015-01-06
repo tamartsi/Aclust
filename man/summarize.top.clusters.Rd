@@ -54,6 +54,9 @@ What is the annotation to be reported on each of the sites in the reported clust
   \item{file.to.print.report}{
 File name to print tables of annotation, effect sizes, and individual site analyses of sites in the top clusters. 
 }
+\item{print.progress}{
+	Print status messages while the function progresses. 
+}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
