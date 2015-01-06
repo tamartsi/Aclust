@@ -16,7 +16,7 @@ summarize.top.clusters(betas, covariates, exposure, id, clusters.GEE.results = N
 An (m by n) matrix of methylation values of $m$ methylation sites measured on $n$ individuals
 }
   \item{covariates}{
-A (n by p) vectors of adjusting covariates, ordered so that its rows corresponds to the columns of the `betas' matrix. 
+Either a (n by p) vectors of adjusting covariates, ordered so that its rows corresponds to the columns of the `betas' matrix, or NULL if there are no covariates.  
 }
   \item{exposure}{
 A vector of size $n$ of exposure values for each individual. Same order as the covariates. 

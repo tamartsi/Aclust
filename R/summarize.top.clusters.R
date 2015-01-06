@@ -81,10 +81,11 @@ function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.
 	rownames(ind.res.mat) <- sites.vec
 	
 	
-	model.expr.1.site <- paste("model <- geeglm(temp.meth[ind.comp] ~ exposure[ind.comp] + ")	
+	model.expr.1.site <- paste("model <- geeglm(temp.meth[ind.comp] ~ exposure[ind.comp]")	
+	if (!is.null(covariates)){
 	for (j in 1:ncol(covariates)){
-		 if (j == ncol(covariates)) model.expr.1.site <- paste(model.expr.1.site, colnames(covariates)[j])
-		 	else  	model.expr.1.site <- paste(model.expr.1.site, colnames(covariates)[j], "+")}
+		 if (j == ncol(covariates)) model.expr.1.site <- paste(model.expr.1.site, "+", colnames(covariates)[j])
+		 	else  	model.expr.1.site <- paste(model.expr.1.site,"+", colnames(covariates)[j])} }
 	model.expr.1.site <- paste(model.expr.1.site, ", data = as.data.frame(covariates[ind.comp,]), id = as.numeric(id)[ind.comp])")
 	
 	if (print.progress) message("starting individual site analysis...")
