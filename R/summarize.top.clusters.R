@@ -1,5 +1,5 @@
 summarize.top.clusters <-
-function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.GEE.results.file = NULL, minimum.sites = 2, top.number = 10, cutoff.fdr.pval = 0.05, cutoff.effect.size = NULL, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_36", "UCSC_RefGene_Name","UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"), file.to.print.report = NULL, print.progress = F){
+function(betas, covariates, exposure, id, clusters.GEE.results = NULL, clusters.GEE.results.file = NULL, minimum.sites = 2, top.number = 10, cutoff.fdr.pval = 0.05, cutoff.effect.size = NULL, annot = NULL, annotation.file.name = NULL, required.annotation = c("IlmnID", "Coordinate_37", "UCSC_RefGene_Name","UCSC_RefGene_Group", "UCSC_CpG_Islands_Name", "Relation_to_UCSC_CpG_Island"), file.to.print.report = NULL, print.progress = F){
 ## Returns a summary of the top clusters:
 ## Chooses the top clusters according to the top.number provvided, with FDR p-value at most 0.05, and with effect size at least cutoff.effect.size (if given)
 ## For each of the top cluster, returns exposure effect size and pvalue before and after FDR, and illumina annotation
