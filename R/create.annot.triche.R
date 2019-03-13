@@ -1,3 +1,20 @@
+#' Title Create an annotation to a vector of probes
+#'
+#' @param probe.vec A vector of Illumina probe names 
+#' @param only.locations If TRUE, only chromosomes and CpG location will be returned. 
+#'
+#' @return A data table with annotation information. If only.locations=T, chromosome and chromosomal locations are given. Otherwise, also infinium design type, gene name, functional group, associated island (or CpG resort), type of region in the resort. 
+#' @export
+#'
+#' @examples
+#' 
+#' 
+#' data(betas.7)
+#' source("http://bioconductor.org/biocLite.R")  
+#' biocLite("IlluminaHumanMethylation450k.db")
+#' require(IlluminaHumanMethylation450k.db) # this must be loaded
+#' annot.7 <- create.annot.triche(rownames(betas.7), only.locations = T)
+#' 
 create.annot.triche <-
 function(probe.vec, only.locations = F){
 	

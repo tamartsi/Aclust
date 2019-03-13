@@ -1,12 +1,14 @@
 Package: Aclust
 Type: Package
 Title: Clustering functions and analysis pipeline for methylation outcome data based on clustering and GEEs
-Version: 2.0.1
-Date: 2013-08-23
-Author: Tamar Sofer
-Maintainer: Tamar Sofer <tsofer@hsph.harvard.edu>
+Version: 2.1.0
+Date: 2019-03-13
+Author: Tamar Sofer, Jiwon Lee
+Maintainer: Tamar Sofer <tsofer@bwh.harvard.edu>
 Description: The package implements the A-clustering algorithm to detect regions of co-regulated CoG sites, and a  pipeline focused on the analysis of methylation data, in which they are assumed to be outcomes. The analysis starts with a clustering step, in which adjacent probes are clustered based on correlations, and then exposure effect is estimated using GEEs. There is a function to output the results and write tables to a latex file. 
 License: GPL2
 LazyLoad: yes
+Encoding: UTF-8
 Depends: geepack, data.table, AnnotationDbi
 Suggests: IlluminaHumanMethylation450k.db
+RoxygenNote: 6.1.1
