@@ -8,7 +8,7 @@
 #' @param location.vec An m vector specifying the locations (e.g. chromosomal locations) of the variables measured in the matrix ordr.vec. 
 #' @param dist.type Type of similarity distance function "spearman", "person" or "euclid". 
 #'
-#' @return
+#' @return An m vector of cluster assignments of the m ordered variables. 
 #' @export
 #'
 #' @examples

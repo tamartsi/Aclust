@@ -1,3 +1,5 @@
+###called by Aclust. No need to export
+
 calc.dist.d.neighbor <-
 function(ordr.vec, d, dist.type = "spearman"){
 	## calucate the distances between vectors, and their d neighbor. 

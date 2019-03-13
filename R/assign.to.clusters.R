@@ -1,3 +1,29 @@
+#' Title Cluster a set of probes
+#' 
+#' Returns a list with clusters (each item is a cluster - a set of probes)
+#' 
+#' @param betas An (m by n) matrix of methylation values measured on $n$ participants in $m$ sites. 
+#' @param annot A preloaded data.table of annotation
+#' @param annotation.file.name If annot is not given, annotation.file.name can provide the file name of the illumine annotation file and the function will load and convert it to a data.table. 
+#' If neither annot nor annotation.file.name are provided, annotation will be loaded from Tim Triche's bioconductor R package. 
+#' @param dist.type Type of similarity distance function "spearman", "pearson" (correlation measures) or "euclid". 
+#' @param method Type of clustering function. Choices are "single", "complete", or "average". 
+#' @param dist.thresh A similarity distance threshold. Two neighboring clusters are merged to a single cluster if the similarity distance between them is above dist.thresh. 
+#' @param bp.merge A distance in chromosomal location. Any set of methylation sites within an interval smaller or equal to bp.dist will be potentially merged, depending on the similarity between sites at the ends of the interval.
+#' @param bp.thresh.clust Optional maximum length between neighboring variables permitting to cluster them together. 
+#' @param return.chroms ???
+#'
+#' @return A list in which each item is a vector of Illumina probe ids of methylation sites clustered together.
+#' @export
+#'
+#' @examples
+#' 
+#' data(betas.7) ## upload methylation data
+#' exposure <- rbinom(ncol(betas.7), 1,prob = 0.5) ## generate random exposure
+#' covariates <- matrix(rnorm(2*ncol(betas.7)), ncol = 2)
+#' 
+#' @details The package is adjusted to the Illumina annotation (i.e. through part of its column names) but can easily be adjusted to an attestation data table with different column names. 
+#' 
 assign.to.clusters <-
 function(betas, annot = NULL, annotation.file.name = NULL, dist.type = "spearman", method = "single", dist.thresh = 0.5, bp.merge = 0, bp.thresh.clust = Inf, return.chroms = NULL){
 ### function that gets a matrix of beta values and returns a list of cluster assignments. it uses the

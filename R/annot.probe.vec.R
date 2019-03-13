@@ -1,3 +1,23 @@
+#' Title Annotate vector of Illumina probe names
+#'
+#' Returns a matrix with annotations of the CpG sites represented by a given vector of probe names
+#'
+#' @param probe.vec A vector of Illumina probe names
+#' @param annot A preloaded data.table of annotation
+#' @param annotation.file.name If annot is not given, annotation.file.name can provide the file name of the illumine annotation file and the function will load and convert it to a data.table. 
+#' If neither annot nor annotation.file.name are provided, annotation will be loaded from Tim Triche's bioconductor R package. 
+#' @param required.annotation Names of columns from Illumina annotation file, to be provided as annotation 
+#'
+#' @return A matrix of requred.annotations for each of the probes in probe.vec
+#' @export
+#'
+#' @examples
+#' 
+#' data(betas.7)
+#' data(annot.7)
+#' annot.sites <- annot.probe.vec(rownames(betas.7)[1:10], annot = annot.7)
+#' 
+#' 
 annot.probe.vec <-
 function(probe.vec, annot = NULL, 
          annotation.file.name = NULL, 

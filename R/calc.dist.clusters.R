@@ -1,3 +1,4 @@
+###called by Acluster. No need to export
 calc.dist.clusters <-
 function(clust.1, clust.2, type = "single", dist.type = "spearman"){
 	## caculates the distance between two sets of vectors
