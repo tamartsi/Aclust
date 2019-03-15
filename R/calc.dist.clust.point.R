@@ -1,3 +1,4 @@
+###called by calc.dist.clusters - no need to export###
 calc.dist.clust.point <-
 function(clust, pnt, type = "single", dist.type = "spearman"){
 	## caculates the distance between a set of vectors and a single vector. 

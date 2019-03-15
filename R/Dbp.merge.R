@@ -1,3 +1,20 @@
+#' Title Dbp.merge
+#'
+#' Merge all sites on an interval, if the sites at the ends of the interval are ``close" to each other 
+#'
+#' @param ordr.vec An (n by m) matrix of n measurements of m random variables (methylations). The columns are ordered.
+#' @param thresh.dist A similarity distance threshold. Sites in the interval are merged to a single cluster if the similarity distance between them is above thresh.dist.
+#' @param bp.thresh.dist A threshold distance in (e.g.) chromosomal location. Any interval to be potentially merged is smaller or equal to bp.thresh.dist.
+#' @param location.vec An m vector specifying the locations (e.g. chromosomal locations) of the variables measured in the matrix ordr.vec. 
+#' @param dist.type Type of similarity distance function "spearman", "person" or "euclid". 
+#'
+#' @return An m vector of cluster assignments of the m ordered variables. 
+#' @export
+#'
+#' @examples
+#' 
+#' 
+#' 
 Dbp.merge <-
 function(ordr.vec, thresh.dist, bp.thresh.dist, location.vec,  dist.type = "spearman"){
 	stopifnot( is.element(tolower(dist.type), c("spearman", "pearson","euclid" )))

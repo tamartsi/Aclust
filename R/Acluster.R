@@ -1,3 +1,25 @@
+#' Title A-clustering
+#' An algorithm for clustering of adjacent clusters
+#' @param ordr.vec An (n by m) matrix of n measurements of m random variables (methylations). The columns are ordered. 
+#' @param thresh.dist A distance threshold. Two neighboring clusters are merged to a single cluster if the distance between them is above thresh.dist.
+#' @param which.clust A vector of initial clusters assignments of the m variables. If it is not provided, it is taken that each site is a unique cluster. 
+#' @param location.vec An m vector specifying the locations (e.g. chromosomal locations) of the variables measured in the matrix ordr.vec. 
+#' @param max.dist Optional maximum length between neighboring variables permitting to cluster them together. 
+#' @param type Type of clustering function. "single", "complete" or "average". 
+#' @param dist.type Type of distance function. Choices are "spearman", "pearson", or "euclid". 
+#'
+#' @return An m vector of cluster assignments of the m ordered variables. 
+#' @export
+#'
+#' @examples
+#' 
+#' data(betas.7)
+#' data(annot.7)
+#' dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot.7)
+#' cluster.vec <- Acluster(ordr.vec = dat.7.ord$betas.by.chrom[[1]], thresh.dist = 0.2, 
+#' location.vec = dat.7.ord$sites.locations.by.chrom[[1]]$Coordinate_37, max.dist = 1000, type = "average")
+#' cluster.vec[1:10]
+#' 
 Acluster <-
 function(ordr.vec, thresh.dist, which.clust = NULL, location.vec = NULL, max.dist = Inf, type = "single", dist.type = "spearman"){
 	stopifnot(is.element(type, c("single", "complete", "average")), is.element(tolower(dist.type), c("spearman", "pearson","euclid" )))

@@ -1,3 +1,27 @@
+#' Title Organizes betas by location
+#' 
+#' Organizes a matrix of methylation values to be ordered by chromosomal location
+#' 
+#' @param betas An (m by n) matrix of methylation values measured on $n$ participants in $m$ sites. 
+#' @param annot A preloaded data.table of annotation
+#' @param annotation.file.name If annot is not given, annotation.file.name can provide the file name of the illumine annotation file and the function will load and convert it to a data.table. 
+#' If neither annot nor annotation.file.name are provided, annotation will be loaded from Tim Triche's bioconductor R package.
+#' @param return.chroms Optional list of chromosomes, if one is interested in specific chromosomes. 
+#'
+#' @return
+#' \item{betas.by.chrom}{A list ordered by chromosome number. Each item in this list contains a matrix of methylation values for the subsets of sites from betas from the corresponding chromosome. The rows are organized according to chromosomal location. }
+#' \item{sites.locations.by.chrom}{A list ordered by chromosome number. Each item in this list contains a matrix specifying chromosomal locations of each of the sites in the subsets of sites from betas from the corresponding chromosome. The rows are organized according to chromosomal location. }
+#'  
+#' @export
+#'
+#' @examples
+#' 
+#' data(betas.7) ## upload methylation data
+#' data(annot.7)
+#' dat.7.ord <- order.betas.by.chrom.location(betas.7, annot = annot.7)
+#' dat.7.ord$betas.by.chrom$"7"[1:5,1:5]
+#' dat.7.ord$sites.locations.by.chrom$"7"[1:5]
+#' 
 order.betas.by.chrom.location <-
 function(betas, annot = NULL, annotation.file.name = NULL, return.chroms = NULL)  {
 ### function that gets a matrix of beta values (rows are CpG sites, column names are samples' names) 
@@ -45,3 +69,7 @@ function(betas, annot = NULL, annotation.file.name = NULL, return.chroms = NULL)
 	return(list(betas.by.chrom = betas.by.chrom, 
               sites.locations.by.chrom = sites.by.chrom))
 }
+
+
+#Returns A list with two components: 1) Matrices of methylation values for the subsets of sites from betas from the corresponding chromosome. The rows are organized according to chromosomal location.
+#2) Matrices specifying chromosomal locations of each of the sites in the subsets of sites from betas from the corresponding chromosome. The rows are organized according to chromosomal location.
